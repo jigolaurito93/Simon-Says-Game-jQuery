@@ -5,6 +5,20 @@ var buttonColours = ['red', 'blue', 'green', 'yellow'];
 var userClickedPattern = []
 var gamePattern = []
 
+// To track whether the game has started or not
+var started = false
+
+var level = 0
+
+// If key is pressed, start game sequence
+$(document).keydown(function(){
+    if(!started){
+        $('#level-title').text('Level ' + level)
+        nextSequence();
+        started = true;
+    }
+});
+
 // Click event function to play sound when button is clicked
 $(".btn").click(function(e){
 
@@ -18,6 +32,13 @@ $(".btn").click(function(e){
 
 // Function that generates number from 0 to 3
 function nextSequence(){
+
+    // Everytime nextSequence() is invoked, level increments by 1 
+    level++;
+
+    // Displays the current level
+    $('#level-title').text('Level ' + level)
+
     var randomNumber = Math.round(Math.random()*3); // Generates a random number from 0 to 3
     var randomChosenCoulour = buttonColours[randomNumber]; // Randomly chooses a color from the buttonCoulours array
     gamePattern.push(randomChosenColour); // Adds the random chosen color to the gamePattern array
@@ -41,6 +62,4 @@ function animatePress(currentColour){
     setTimeout(function(){
         $('#' + currentColour).removeClass('pressed');
     }, 100)
-    
-
 }
