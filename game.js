@@ -25,10 +25,31 @@ $(".btn").click(function(e){
     var userChosenCoulour = e.target.id // Grab the id of the chosen color
     userClickedPattern.push(userChosenCoulour); // Add the id of the chosen color to the userClickedPattern array
 
-    playSound(userChosenCoulour)
-    animatePress(userChosenCoulour)
+    playSound(userChosenCoulour);
+    animatePress(userChosenCoulour);
+
+    var userClickedPatternIndex = userClickedPattern.length - 1;
+    console.log(userClickedPatternIndex);/////////////////////////
+    checkAnswer(userClickedPatternIndex);
     
 })
+
+
+function checkAnswer(currentLevel){
+    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]){
+        console.log("success");
+
+        if (userClickedPattern.length === gamePattern.length){
+
+            setTimeout(function(){
+                nextSequence();
+            }, 1000)
+
+        }
+    } else {
+        console.log('wrong');
+    }
+}
 
 // Function that generates number from 0 to 3
 function nextSequence(){
@@ -44,6 +65,8 @@ function nextSequence(){
     gamePattern.push(randomChosenColour); // Adds the random chosen color to the gamePattern array
 
     $('#'+ randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
+
+    
 
     playSound(randomChosenCoulour);
     animatePress(randomChosenCoulour)
