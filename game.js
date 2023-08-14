@@ -48,6 +48,17 @@ function checkAnswer(currentLevel){
         }
     } else {
         console.log('wrong');
+        var wrong = new Audio("/sounds/wrong.mp3")
+        wrong.play(); // Plays the error sound when player commits an error
+        $('body').addClass('game-over')
+        
+        //Removes the game-over styling after 200 milliseconds
+        setTimeout(function() {
+            $('body').removeClass('game-over')
+        },200);
+
+        // Change the h1 title to say "Game Over"
+        $('h1').text('Game Over, Press Any Key to Restart');
     }
 }
 
