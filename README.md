@@ -2,6 +2,9 @@
 
 <h1>Simon Says Game</h1>
 
+Take a look at my project, which I've deployed on Netlify.
+https://lnkd.in/gXg35Z5f
+
 - Crafted this game using HTML, CSS, and JavaScript 
 - The entire game was brought to life through the application and deployment of the jQuery library.
 - The utilization of jQuery significantly streamlined the process, making it more efficient in terms of time consumption.
